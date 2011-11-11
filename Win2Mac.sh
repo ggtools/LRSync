@@ -25,8 +25,6 @@ fi
 
 . $(dirname $(readlink $0))/LRInit.sh
 
-cp -p "$CAT" "${CAT}.lrw2m"
-
 {
 	echo ".echo on"
 	for (( i=0 ; i < ${#winVols[*]} ; i++ ))
@@ -35,4 +33,9 @@ cp -p "$CAT" "${CAT}.lrw2m"
 update AgLibraryRootFolder set absolutePath=replace(absolutePath, '${winVols[$i]}', '${macVols[$i]}') where absolutePath LIKE '${winVols[$i]}/%';
 EOF
 	done
-} | sqlite3 "$CAT"
+} | sqlite3 "${TEMPCAT}"
+
+touch -r "${CAT}" "${TEMPCAT}"
+mv -f "${CAT}" "${CAT}.lrsw2m"
+mv "${TEMPCAT}" "${CAT}"
+rm -f "${CAT}.lock"

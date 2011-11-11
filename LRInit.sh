@@ -31,6 +31,15 @@ while getopts "c:v:" opt; do
 		esac
 done
 
+if [ -z "$CAT" -o -z "$VOLDEF_FILE" ]; then
+    cat <<EOF >&2
+Usage:
+    $(basename $0) -c catalog -v volume_definition
+
+EOF
+    exit 1
+fi
+
 if [ ! -f "$CAT" ]; then
 	echo >&2 "Cannot open catalog file '$CAT'"
 	exit 2
@@ -46,6 +55,13 @@ i=0
 for a in $(sed 's/#.*//' "$VOLDEF_FILE" | grep -F =) ;do
 	winVols[$i]=$(echo "$a" | cut -d = -f 1)
 	macVols[$i]=$(echo "$a" | cut -d = -f 2)
-	echo $i
 	let i++
 done
+
+if lockfile -! -r 1 -1 "${CAT}.lock"; then
+    echo "Catalog locked, aborting"
+    exit 4
+fi
+
+TEMPCAT=$(mktemp "${CAT}.lrsync.XXXXXXXX")
+cp -p "$CAT" "${TEMPCAT}"
