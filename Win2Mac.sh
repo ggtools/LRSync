@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 
-LRINIT=$(dirname $(readlink $0))/LRInit.sh
+LRINIT=$(dirname $(readlink $0))/LRSyncBase.sh
 
 if [ ! -f "$LRINIT" ]
 then
@@ -23,19 +23,4 @@ then
 	exit 1
 fi
 
-. $(dirname $(readlink $0))/LRInit.sh
-
-{
-	echo ".echo on"
-	for (( i=0 ; i < ${#winVols[*]} ; i++ ))
-	do
-		cat <<EOF
-update AgLibraryRootFolder set absolutePath=replace(absolutePath, '${winVols[$i]}', '${macVols[$i]}') where absolutePath LIKE '${winVols[$i]}/%';
-EOF
-	done
-} | sqlite3 "${TEMPCAT}"
-
-touch -r "${CAT}" "${TEMPCAT}"
-mv -f "${CAT}" "${CAT}.lrsw2m"
-mv "${TEMPCAT}" "${CAT}"
-rm -f "${CAT}.lock"
+. "$LRINIT"
