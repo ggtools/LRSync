@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# This file is part of LRSync. Copyright © 2011 Christophe Labouisse.
+# This file is part of LRSync. Copyright © 2011-2012 Christophe Labouisse.
 # 
 # LRSync is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
