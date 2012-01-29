@@ -38,6 +38,8 @@ lrsync -c catalog -d direction [-q] [-r repo_dir]
 
 	-c catalog  : the catalog to be converted, must be declared in lrsync.ini
 	-d direction: direction of the conversion either fromRepo or toRepo
+	-f          : force conversion even if source is older than destination or
+                  if the post conversion tests fail.
 	-q          : remove output during conversion
 	-r repo_dir : directory containing the reference catalogs
 	
@@ -63,7 +65,7 @@ fi
 readIniSection LRS_
 
 # Override it with the command line
-while getopts "c:d:qr:" opt; do
+while getopts "c:d:fqr:" opt; do
 	case $opt in
 		c)
 			LRS_CATALOG="$OPTARG"
@@ -75,6 +77,9 @@ while getopts "c:d:qr:" opt; do
 				echo "Invalid direction '$OPTARG'" >&2
 				exit 1
 			fi
+			;;
+		f)
+			LRS_FORCE=1
 			;;
 		q)
 			LRS_QUIET=1

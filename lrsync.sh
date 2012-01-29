@@ -57,7 +57,10 @@ else
 	destVols=("${catVols[@]}")
 fi
 
-# TODO check if source catalog is older than destination catalog.
+if [ -z "$LRS_FORCE" -a "$sourceCat" -ot "$destCat" ]; then
+	echo "Source catalog is older than destination catalog, not converting unless -f is supplied" >&2
+	cleanAndExit 6
+fi
 
 # Create a temporary catalog in the destination directory.
 TEMPCAT=$(mktemp "${destDir}/${LRS_CATALOG}.lrsync.XXXXXXXX")
