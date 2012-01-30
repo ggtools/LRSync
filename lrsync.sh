@@ -69,7 +69,7 @@ cp -p "${sourceCat}" "${TEMPCAT}"
 
 {
 	# [ "$LRS_QUIET" ] || echo ".echo on"
-		for (( i=0 ; i < ${#repoVols[*]} ; i++ ))
+	for (( i=0 ; i < ${#sourceVols[*]} ; i++ ))
 	do
 		cat <<EOF
 update AgLibraryRootFolder set absolutePath=replace(absolutePath, '${sourceVols[$i]}', '${destVols[$i]}') where absolutePath LIKE '${sourceVols[$i]}/%';
@@ -77,14 +77,33 @@ EOF
 	done
 } | ${SQLITE} "${TEMPCAT}"
 
-# TODO check if catalog only contains acceptable root folders.
-
 if [ $? -ne 0 ]; then
 	echo "Error while processing catalog '$sourceCat'" >&2
 	rm -f "$TEMPCAT"
 	cleanAndExit 5
 fi
-	
+
+# Check if the dest catalog does not contain unconverted folders
+if [ -z "$LRS_FORCE" ]; then
+	statement="select name, absolutePath from AgLibraryRootFolder where id_local not in (select id_local from AgLibraryRootFolder where"
+	for (( i=0 ; i < ${#destVols[*]} ; i++ ))
+	do
+		[ $i -gt 0 ] && statement="$statement or"
+		statement="$statement absolutePath like '${destVols[$i]}/%'"
+	done
+	statement="$statement);"
+	unconvFolders=$(echo "$statement" | $SQLITE "${TEMPCAT}")
+	if [ -n "$unconvFolders" ]; then
+		cat >&2 <<EOF
+Converted catalog still contains unconverted folders. Won't convert without -f.
+Unconverted folders:
+$unconvFolders
+EOF
+		rm -f "$TEMPCAT"
+		cleanAndExit 7
+	fi
+fi
+
 touch -r "${sourceCat}" "${TEMPCAT}"
 [ -f "${destCat}" ] && mv -f "${destCat}" "${destCat}.lrsync"
 mv "${TEMPCAT}" "${destCat}"
