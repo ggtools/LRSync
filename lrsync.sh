@@ -108,4 +108,7 @@ touch -r "${sourceCat}" "${TEMPCAT}"
 [ -f "${destCat}" ] && mv -f "${destCat}" "${destCat}.lrsync"
 mv "${TEMPCAT}" "${destCat}"
 
+msg "Synchronizing previews"
+rsync -a "${sourceDir}/${LRS_CATALOG} Previews.lrdata" "${destDir}"
+
 cleanAndExit
