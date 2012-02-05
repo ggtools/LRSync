@@ -65,7 +65,7 @@ fi
 readIniSection LRS_
 
 # Override it with the command line
-while getopts "c:d:fqr:" opt; do
+while getopts "?hc:d:fqr:" opt; do
 	case $opt in
 		c)
 			LRS_CATALOG="$OPTARG"
@@ -87,7 +87,7 @@ while getopts "c:d:fqr:" opt; do
 		r)
 			LRS_REPODIR="$OPTARG"
 			;;
-		\?)
+		\?|h)
 			[ -n "$OPTARG" ] && echo "Invalid option: -$OPTARG" >&2
 			usage >&2
 			exit 1
