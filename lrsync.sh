@@ -41,6 +41,12 @@ fi
 
 catLocked=1
 
+if [ "$LRS_DIRECTION" = "display" ]; then
+	msg "The following rootfolders exist in the catalog:" 
+	echo "select absolutePath from AgLibraryRootFolder;" | ${SQLITE} "$LRS_CAT_FILE"
+	cleanAndExit
+fi
+
 if [ "$LRS_DIRECTION" = "to" ]; then
 	sourceCat="$LRS_CAT_FILE"
 	sourceDir="$LRS_CAT_DIR"

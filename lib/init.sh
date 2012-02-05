@@ -71,7 +71,7 @@ while getopts "?hc:d:fqr:" opt; do
 			LRS_CATALOG="$OPTARG"
 			;;
 		d)
-			if [[ "$OPTARG" =~ ^from|to ]]; then
+			if [[ "$OPTARG" =~ ^from|to|display ]]; then
 				LRS_DIRECTION=${BASH_REMATCH[0]}
 			else
 				echo "Invalid direction '$OPTARG'" >&2
@@ -123,7 +123,7 @@ if [ ! -d "$LRS_CAT_DIR" ]; then
 fi
 
 LRS_CAT_FILE="$LRS_CAT_DIR/$LRS_CATALOG.lrcat"
-if [ "$LRS_DIRECTION" = "to" -a ! -f "$LRS_CAT_FILE" ]; then
+if [[ "$LRS_DIRECTION" =~ to|display && ! -f "$LRS_CAT_FILE" ]]; then
 	echo "Catalog file '$LRS_CAT_FILE' not found" >&2
 	usage >&2
 	exit 3
