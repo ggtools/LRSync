@@ -4,14 +4,28 @@
   
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" type="text/css" href="css/pygments.css">
+    <link rel="stylesheet" type="text/css" href="css/default.css">
     <title>{{ page.title }}</title>
   </head>
-  
   <body>
-    <div id="main">
-
-          {{ content }}
-          
-    </div><!-- /#main -->
+      <a href="https://github.com/ggtools/LRSync">
+        <img alt="Fork me on GitHub" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" style="position: absolute; top: 0; right: 0; border: 0;">
+      </a>
+    <div id="container">
+      <div id="header">
+        <h1>{{ page.title }}</h1>
+      </div>
+      <div id="content">
+  
+            {{ content }}
+            
+      </div><!-- /#main -->
+      <div id="sidebar">
+        {:toc}
+      </div>
+      <div id="footer">
+      </div>
+    </div><!-- /container -->
   </body>
 </html>
