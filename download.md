@@ -9,10 +9,10 @@ Downloads
 
 LRSync is released under the terms of [GNU General Public License v3](http://www.gnu.org/licenses/gpl-3.0.html). It is available in either [zip](https://github.com/ggtools/LRSync/zipball/master) or [tar.gz](https://github.com/ggtools/LRSync/tarball/master) formats.
 
-SQLite
-------
+Third party downloads
+---------------------
 
-No special installation is required on MacOS X as `sqlite3` is installed by the system. However on Windows with Cygwin you'll need to install the `sqlite3` package.
+No special installation is required on MacOS X as `sqlite3` and `rsync` are installed by the system. However on Windows with Cygwin you'll need to install the `sqlite3` and `rsync` packages.
 
 Installation
 ============
