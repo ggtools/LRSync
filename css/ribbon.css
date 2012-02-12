@@ -97,12 +97,12 @@
 }
 
 .my.ribbon {
-  background-color: darkBlue;
+  background-color: darkSlateGray;
   color: #ecedee;
 }
 
 .my.ribbon .text {
-  border: 1px solid lightblue;
+  border: 1px solid lightSlateGray;
 }
 
 .orange.ribbon {

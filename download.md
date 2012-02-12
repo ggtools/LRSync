@@ -7,7 +7,7 @@ pygments: true
 Downloads
 =========
 
-LRSync is available in either [zip](https://github.com/ggtools/LRSync/zipball/master) or [tar.gz](https://github.com/ggtools/LRSync/tarball/master) formats.
+LRSync is released under the terms of [GNU General Public License v3](http://www.gnu.org/licenses/gpl-3.0.html). It is available in either [zip](https://github.com/ggtools/LRSync/zipball/master) or [tar.gz](https://github.com/ggtools/LRSync/tarball/master) formats.
 
 SQLite
 ------
