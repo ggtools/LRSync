@@ -15,6 +15,8 @@ LRSync main configuration file is the `lrsync.ini` file located in `$HOME/.lrsyn
 [main]
 # Location of the catalog repository
 REPODIR=$HOME/Pictures/LRSync/repo
+# Uncomment if the repo needs to be locked
+# LOCKREPO=true
 
 # Sample catalog configuration
 # Catalog named MyPhotos.lrcat
@@ -34,6 +36,20 @@ FOLDERCONFIG=folders.conf
 
 Folders configuration
 =====================
+
+Displaying root folders
+-----------------------
+
+The root folders of a catalog can be displayed using LRSync using the following command:
+
+{% highlight bash %}
+$ ./lrsync.sh -q -c PhotosPerso-2-2 -d display
+/Users/Me/Pictures/Lightroom/Photos/
+/Users/Shared/Pictures/Lightroom/Photos/
+{% endhighlight %}
+
+Configuration file
+------------------
 
 A folder configuration file defines the relation between folders in the repo catalog and in the working catalogs. One or more folder configuration files may exist. The file consists in several lines with one folder definition per line. For instance:
 
