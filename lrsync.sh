@@ -17,11 +17,17 @@
 
 cleanAndExit() {
 	code=${1-0}
+	# Unlock repo if locked
+	if [ -n "$repoLocked" ]; then
+     	msg "Unlocking '${LRS_REPO_FILE}'"
+     	rm -f "${LRS_REPO_FILE}.lock"
+     	repoLocked=""
+	fi
 	# Unlock catalog file.
 	if [ -n "$catLocked" ]; then
 		msg "Unlocking '$LRS_CAT_FILE'"
 		rm -f "${LRS_CAT_FILE}.lock"
-		catLock=""
+		catLocked=""
 	fi
 	exit $code
 }
@@ -40,6 +46,17 @@ if lockfile -! -r 1 -1 "${LRS_CAT_FILE}.lock"; then
 fi
 
 catLocked=1
+
+if [ -n "$LRS_LOCKREPO" ]; then
+# Lock catalog file.
+  msg "Locking catalog file '$LRS_REPO_FILE'"
+  if lockfile -! -r 1 -1 "${LRS_REPO_FILE}.lock"; then
+      echo "Repo locked, aborting"
+      cleanAndExit 4
+  fi
+  
+  repoLocked=1
+fi
 
 if [ "$LRS_DIRECTION" = "display" ]; then
 	msg "The following rootfolders exist in the catalog:" 
