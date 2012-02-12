@@ -4,6 +4,10 @@ body {
     text-align: justify;
 }
 
+a {
+  text-decoration: none;
+}
+
 a:hover {
     background-color: #C8C8D0;
     color: blue;
@@ -20,20 +24,48 @@ a:link img, a:visited img {
 
 #container {
     background-color: #F0F0F0;
-	width:960px;
+	width:56em;
 	margin:20px auto;
 	box-shadow: 1px -2px 18px #CCCCCC;
 }
 
 #content {
-     padding: 10px 20px 20px;
+     padding: 0.625em 0.625em 1.25em 1.25em;
 	float:left;
 	width:40em; // 80 chars
 }
 
 #sidebar {
-	float:left;
-	width:10em;
+  float:right;
+  width:12em;
+  padding: 0.625em 1.25em 1.25em 0.625em;
+}
+
+#sidebar ul {
+    border: medium none;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#sidebar li {
+    border-top: 1px solid gray;
+    display: block;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 90%;
+    margin: 0;
+    padding: 0.25em 0.5em 0.25em 1em;
+    text-align: left;
+    width: auto;
+}
+
+#sidebar a {
+    text-decoration: none;
+}
+
+#sidebar li:first-child {
+    border: medium none;
 }
 
 #footer {
@@ -53,7 +85,18 @@ pre {
     color: #393939;
     margin: 0;
     overflow: auto;
-    padding: 10px;
+    padding: 0.625em;
+}
+
+.title {
+    background: none repeat scroll 0 0 #046D8B;
+    border-radius: 5px 5px 5px 5px;
+    color: #FFFFFF;
+    margin: 20px 0 20px -1.5em;
+    padding: 10px 20px;
+    box-shadow: 1px -2px 18px #CCCCCC;
+    font-size: 200%;
+    font-family: sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -62,11 +105,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    background: none repeat scroll 0 0 #046D8B;
-    border-radius: 5px 5px 5px 5px;
-    color: #FFFFFF;
-    margin: 20px 0 20px -100px;
-    padding: 10px 20px;
-    box-shadow: 1px -2px 18px #CCCCCC;
+  font-size: 150%;
 }
 
+h2 {
+  font-size: 125%;
+}
