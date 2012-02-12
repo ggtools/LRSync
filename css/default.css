@@ -89,10 +89,10 @@ pre {
 }
 
 .title {
-    background: none repeat scroll 0 0 #046D8B;
+    background: none repeat scroll 0 0 darkBlue;
     border-radius: 5px 5px 5px 5px;
     color: #FFFFFF;
-    margin: 20px 0 20px -1.5em;
+    margin: 20px 1.5em 20px -1.5em;
     padding: 10px 20px;
     box-shadow: 1px -2px 18px #CCCCCC;
     font-size: 200%;

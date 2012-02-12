@@ -1,5 +1,5 @@
 ---
-title: "LRSync: an Adobe LightRoom synchronizer"
+title: "an Adobe LightRoom synchronizer"
 layout: default
 pygments: true
 ---
