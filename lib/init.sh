@@ -34,15 +34,16 @@ readIniSection() {
 
 usage() {
 	cat <<EOF
-lrsync -c catalog -d direction [-q] [-r repo_dir]
+lrsync -c catalog [-q] [-r repo_dir] operation
 
 	-c catalog  : the catalog to be converted, must be declared in lrsync.ini
-	-d direction: direction of the conversion either fromRepo or toRepo
 	-f          : force conversion even if source is older than destination or
                   if the post conversion tests fail.
 	-q          : remove output during conversion
 	-r repo_dir : directory containing the reference catalogs
 	
+	operation   : fromRepo or toRepo to synchronize a catalog from or to the repo.
+	              display to display a list of the root folders of the catalog.
 	
 EOF
 }
@@ -65,18 +66,10 @@ fi
 readIniSection LRS_
 
 # Override it with the command line
-while getopts "?hc:d:fqr:" opt; do
+while getopts "?hc:fqr:" opt; do
 	case $opt in
 		c)
 			LRS_CATALOG="$OPTARG"
-			;;
-		d)
-			if [[ "$OPTARG" =~ ^from|to|display ]]; then
-				LRS_DIRECTION=${BASH_REMATCH[0]}
-			else
-				echo "Invalid direction '$OPTARG'" >&2
-				exit 1
-			fi
 			;;
 		f)
 			LRS_FORCE=1
@@ -94,6 +87,20 @@ while getopts "?hc:d:fqr:" opt; do
 			;;
 		esac
 done
+
+shift $((OPTIND-1))
+[ "$1" = "--" ] && shift
+if [[ "$1" =~ ^from|to|display ]]; then
+	LRS_DIRECTION=${BASH_REMATCH[0]}
+else
+	if [ -z "$1" ]; then
+		echo "Missing mandatory argument direction" >&2
+	else
+		echo "Invalid direction '$1'" >&2
+	fi
+	usage >&2
+	exit 1
+fi
 
 mkdir -p "$LRS_REPODIR"
 
