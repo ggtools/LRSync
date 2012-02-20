@@ -43,7 +43,7 @@ Displaying root folders
 The root folders of a catalog can be displayed using LRSync using the following command:
 
 {% highlight bash %}
-$ ./lrsync.sh -q -c PhotosPerso-2-2 -d display
+$ ./lrsync.sh -q -c PhotosPerso-2-2 display
 /Users/Me/Pictures/Lightroom/Photos/
 /Users/Shared/Pictures/Lightroom/Photos/
 {% endhighlight %}

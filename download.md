@@ -39,12 +39,14 @@ $ lrsync.sh -h
 {% endhighlight %}
 Which should gave an output similar to:
 {% highlight text %}
-lrsync -c catalog -d direction [-q] [-r repo_dir]
+lrsync -c catalog [-q] [-r repo_dir] operation
 
-    -c catalog  : the catalog to be converted, must be declared in lrsync.ini
-    -d direction: direction of the conversion either fromRepo or toRepo
-    -f          : force conversion even if source is older than destination or
+	-c catalog  : the catalog to be converted, must be declared in lrsync.ini
+	-f          : force conversion even if source is older than destination or
                   if the post conversion tests fail.
-    -q          : remove output during conversion
-    -r repo_dir : directory containing the reference catalogs
+	-q          : remove output during conversion
+	-r repo_dir : directory containing the reference catalogs
+	
+	operation   : fromRepo or toRepo to synchronize a catalog from or to the repo.
+	              display to display a list of the root folders of the catalog.
 {% endhighlight %}
