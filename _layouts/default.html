@@ -1,44 +1,60 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-  
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="keywords" contents="lightroom, adobe lightroom, adobe photoshop lightroom, mac os, bash, synchronization, rsync, sqlite, lightroom catalog, conversion, github, windows" />
-    <link rel="stylesheet" type="text/css" href="css/pygments.css">
-    <link rel="stylesheet" type="text/css" href="css/default.css">
-    <link rel="stylesheet" type="text/css" href="css/ribbon.css">
-    <script src="scripts/cufon-yui.js" type="text/javascript"></script>
-    <script src="scripts/Optima_700.font.js" type="text/javascript"></script>
-    <script type="text/javascript">
-      Cufon.replace('h1, h2, h3');
-      Cufon.replace('.title, #sidebar li');
-    </script>
-    <title>LRSync: {{ page.title }}</title>
-  </head>
-  <body>
-    <div class="right ribbon-holder">
-      <a class="my ribbon" href="http://github.com/ggtools/LRSync">
-        <span class="text">Fork me on GitHub</span>
-      </a>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords"
+  contents="lightroom, adobe lightroom, adobe photoshop lightroom, mac os, bash, synchronization, rsync, sqlite, lightroom catalog, conversion, github, windows" />
+<link rel="stylesheet" type="text/css" href="css/pygments.css">
+<link rel="stylesheet" type="text/css" href="css/default.css">
+<link rel="stylesheet" type="text/css" href="css/ribbon.css">
+<script src="scripts/cufon-yui.js" type="text/javascript"></script>
+<script src="scripts/Optima_700.font.js" type="text/javascript"></script>
+<script type="text/javascript">
+	Cufon.replace('h1, h2, h3');
+	Cufon.replace('.title, #sidebar li');
+</script>
+<title>LRSync: {{ page.title }}</title>
+<!-- Google analytics -->
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push([ '_setAccount', 'UA-29370551-1' ]);
+	_gaq.push([ '_trackPageview' ]);
+
+	(function() {
+		var ga = document.createElement('script');
+		ga.type = 'text/javascript';
+		ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl'
+				: 'http://www')
+				+ '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0];
+		s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+<!-- end Google analytics -->
+</head>
+<body>
+  <div class="right ribbon-holder">
+    <a class="my ribbon" href="http://github.com/ggtools/LRSync"> <span class="text">Fork
+        me on GitHub</span>
+    </a>
+  </div>
+  <div id="container">
+    <div id="header">
+      <div class="title">LRSync: {{ page.title }}</div>
     </div>
-    <div id="container">
-      <div id="header">
-        <div class="title">LRSync: {{ page.title }}</div>
-      </div>
-      <div id="content">
-  
-            {{ content }}
-            
-      </div><!-- /#main -->
-      <div id="sidebar">
+    <div id="content">{{ content }}</div>
+    <!-- /#main -->
+    <div id="sidebar">
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="download.html">Download &amp; Install</a></li>
         <li><a href="configuration.html">Configuration</a></li>
         <li><a href="http://github.com/ggtools/LRSync/wiki">Wiki</a></li>
       </ul>
-        <!--<script type="text/javascript">
+      <!--<script type="text/javascript">
           var headers = document.getElementsByTagName("h2");
           for (var i = 0 ; i < headers.length ; i++) {
             var header = headers[i];
@@ -46,10 +62,12 @@
             document.writeln('<a class="toc" href="#'+id+'">'+header.firstChild.nodeValue+'</a><br>');
           }
         </script>-->
-      </div>
-      <div id="footer">
-      </div>
-    </div><!-- /container -->
-    <script type="text/javascript"> Cufon.now(); </script>
-  </body>
+    </div>
+    <div id="footer"></div>
+  </div>
+  <!-- /container -->
+  <script type="text/javascript">
+			Cufon.now();
+		</script>
+</body>
 </html>
