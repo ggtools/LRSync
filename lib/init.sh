@@ -52,6 +52,8 @@ msg() {
 	[ "$LRS_QUIET" ] || echo $@
 }
 
+set +e
+
 LRS_INIDIR="$HOME/.lrsync"
 LRS_INI="$LRS_INIDIR/lrsync.ini"
 SQLITE="sqlite3"

@@ -32,7 +32,11 @@ cleanAndExit() {
 	exit $code
 }
 
-LRS_BASEDIR=$(dirname $0)
+# Just in cas the init file cannot be read.
+set -e
+
+LRS_TRM=$(readlink $0) # The Real Me
+LRS_BASEDIR=$(dirname $LRS_TRM)
 LRS_LIBDIR=$LRS_BASEDIR/lib
 
 # Read options and configuration
