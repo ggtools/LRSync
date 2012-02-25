@@ -84,10 +84,20 @@ else
 	destVols=("${catVols[@]}")
 fi
 
+# Exit if dest catalog is more recent than source catalog
 if [ -z "$LRS_FORCE" -a "$sourceCat" -ot "$destCat" ]; then
 	echo "Source catalog is older than destination catalog, not converting unless -f is supplied" >&2
 	cleanAndExit 6
 fi
+
+# Check if the source catalog has been changed since last synch and exit if not.
+if [ -z "$LRS_FORCE" -a -f "${LRS_REPODIR}/${LRS_CATALOG}.shasum" ]; then
+	if shasum -c -s "${LRS_REPODIR}/${LRS_CATALOG}.shasum"; then
+		echo "No change in catalog files, skipping synchronization unless -f is supplied" >&2
+		cleanAndExit
+	fi
+fi
+
 
 # Create a temporary catalog in the destination directory.
 TEMPCAT=$(mktemp "${destDir}/${LRS_CATALOG}.lrsync.XXXXXXXX")
@@ -137,5 +147,9 @@ mv "${TEMPCAT}" "${destCat}"
 
 msg "Synchronizing previews"
 rsync -a --delete "${sourceDir}/${LRS_CATALOG} Previews.lrdata" "${destDir}"
+
+msg "Creating checksums"
+# Create checksums
+shasum ${LRS_REPO_FILE} ${LRS_CAT_FILE} > ${LRS_REPODIR}/${LRS_CATALOG}.shasum
 
 cleanAndExit
