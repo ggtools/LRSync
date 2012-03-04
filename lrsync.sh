@@ -32,14 +32,13 @@ cleanAndExit() {
 	exit $code
 }
 
-# Just in cas the init file cannot be read.
-set -e
-
-LRS_TRM=$(readlink $0) # The Real Me
+LRS_TRM=$(readlink "$0" || echo "$0") # The Real Me
 LRS_BASEDIR=$(dirname $LRS_TRM)
 LRS_LIBDIR=$LRS_BASEDIR/lib
 
 # Read options and configuration
+# Just in case the init file cannot be read.
+set -e
 . ${LRS_LIBDIR}/init.sh
 
 # Lock catalog file.
