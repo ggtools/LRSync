@@ -61,13 +61,13 @@ if [ -n "$LRS_LOCKREPO" ]; then
   repoLocked=1
 fi
 
-if [ "$LRS_DIRECTION" = "display" ]; then
+if [ "$LRS_COMMAND" = "display" ]; then
 	msg "The following rootfolders exist in the catalog:" 
 	echo "select absolutePath from AgLibraryRootFolder;" | ${SQLITE} "$LRS_CAT_FILE"
 	cleanAndExit
 fi
 
-if [ "$LRS_DIRECTION" = "to" ]; then
+if [ "$LRS_COMMAND" = "to" ]; then
 	sourceCat="$LRS_CAT_FILE"
 	sourceDir="$LRS_CAT_DIR"
 	sourceVols=("${catVols[@]}")

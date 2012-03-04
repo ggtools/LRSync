@@ -93,12 +93,12 @@ done
 shift $((OPTIND-1))
 [ "$1" = "--" ] && shift
 if [[ "$1" =~ ^from|to|display ]]; then
-	LRS_DIRECTION=${BASH_REMATCH[0]}
+	LRS_COMMAND=${BASH_REMATCH[0]}
 else
 	if [ -z "$1" ]; then
-		echo "Missing mandatory argument direction" >&2
+		echo "Missing mandatory argument command" >&2
 	else
-		echo "Invalid direction '$1'" >&2
+		echo "Invalid command '$1'" >&2
 	fi
 	usage >&2
 	exit 1
@@ -111,7 +111,7 @@ if [ ! -d "$LRS_REPODIR" ]; then
 	exit 2
 fi
 
-if [ -z "$LRS_DIRECTION" ]; then
+if [ -z "$LRS_COMMAND" ]; then
 	echo "-d direction is mandatory" >&2
 	usage >&2
 	exit 2
@@ -132,14 +132,14 @@ if [ ! -d "$LRS_CAT_DIR" ]; then
 fi
 
 LRS_CAT_FILE="$LRS_CAT_DIR/$LRS_CATALOG.lrcat"
-if [[ "$LRS_DIRECTION" =~ to|display && ! -f "$LRS_CAT_FILE" ]]; then
+if [[ "$LRS_COMMAND" =~ to|display && ! -f "$LRS_CAT_FILE" ]]; then
 	echo "Catalog file '$LRS_CAT_FILE' not found" >&2
 	usage >&2
 	exit 3
 fi
 
 LRS_REPO_FILE="$LRS_REPODIR/$LRS_CATALOG.lrcat"
-if [ "$LRS_DIRECTION" = "from" -a ! -f "$LRS_REPO_FILE" ]; then
+if [ "$LRS_COMMAND" = "from" -a ! -f "$LRS_REPO_FILE" ]; then
 	echo "Repo file '$LRS_REPO_FILE' not found" >&2
 	usage >&2
 	exit 3
@@ -165,7 +165,7 @@ done
 if [ -z "$LRS_QUIET" ]; then
 	cat <<EOF
 Catalog   : $LRS_CATALOG
-Direction : $LRS_DIRECTION
+Direction : $LRS_COMMAND
 Repository: $LRS_REPODIR
 Repo file : $LRS_REPO_FILE
 LRCat dir : $LRS_CAT_DIR
