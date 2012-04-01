@@ -92,16 +92,17 @@ done
 
 shift $((OPTIND-1))
 [ "$1" = "--" ] && shift
-if [[ "$1" =~ ^from|to|display ]]; then
+if [[ "$1" =~ ^from|^to|^display|^auto ]]; then
 	LRS_COMMAND=${BASH_REMATCH[0]}
 else
 	if [ -z "$1" ]; then
-		echo "Missing mandatory argument command" >&2
+		# Default command is "auto"
+		LRS_COMMAND=auto
 	else
 		echo "Invalid command '$1'" >&2
+     	usage >&2
+     	exit 1
 	fi
-	usage >&2
-	exit 1
 fi
 
 mkdir -p "$LRS_REPODIR"

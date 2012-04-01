@@ -44,7 +44,7 @@ set -e
 # Lock catalog file.
 msg "Locking catalog file '$LRS_CAT_FILE'"
 if lockfile -! -r 1 -1 "${LRS_CAT_FILE}.lock"; then
-    echo "Catalog locked, aborting"
+    echo "Catalog already locked, aborting"
     exit 4
 fi
 
@@ -65,6 +65,16 @@ if [ "$LRS_COMMAND" = "display" ]; then
 	msg "The following rootfolders exist in the catalog:" 
 	echo "select absolutePath from AgLibraryRootFolder;" | ${SQLITE} "$LRS_CAT_FILE"
 	cleanAndExit
+fi
+
+# Find out the right direction to use.
+if [ "$LRS_COMMAND" = "auto" ]; then
+	if [ "$LRS_CAT_FILE" -ot "$LRS_REPO_FILE" ]; then
+		LRS_COMMAND="from"
+	else
+		LRS_COMMAND="to"
+	fi
+	msg "Changing 'auto' command to '$LRS_COMMAND'"
 fi
 
 if [ "$LRS_COMMAND" = "to" ]; then
