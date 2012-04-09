@@ -1,5 +1,5 @@
 ---
-title: "an Adobe LightRoom synchronizer"
+title: "Synchronize Adobe Lightroom between computers"
 layout: default
 pygments: true
 ---
@@ -7,7 +7,7 @@ pygments: true
 Overview
 ========
 
-LRSync is a tool to help the synchronization of Adobe Lightroom catalogs between computers. It is implemented as a bash script will ultimatly become the best sychronization tool ever made. The current version focus on the catalog conversion between the two computers as this is the part is not covered by any other tool I know. The following features are currently supported:
+LRSync is a tool to help the synchronizing Adobe Lightroom catalogs between computers. It is implemented as a bash script will ultimatly become the best sychronization tool ever made. The current version focus on the catalog conversion between the two computers as this is the part is not covered by any other tool I know. The following features are currently supported:
 
 1. Conversion between the local computer and the remote one with different directory layout or operating system.
 
