@@ -72,6 +72,11 @@ a:link img, a:visited img {
 	clear:both;
 }
 
+.buttons{
+    text-align: center;
+    vertical-align: middle;
+} 
+
 code, pre {
     font-family: andale mono,monospace;
     font-size: 0.9em;
