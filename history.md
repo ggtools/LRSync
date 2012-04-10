@@ -5,7 +5,7 @@ pygments: true
 ---
 
 Introduction
-============
+------------
 
 I was using LightRoom for quite a while on my PC as this is probably the best tool for photographer when it comes to organize or process photos. The moment I had a Macbook I had to find out a way to be able to work on both computer as smoothly as possible. Smoothly meaning:
 
@@ -25,7 +25,7 @@ Searching on internet I found out that the solution to keep in sync two computer
 To make it short, none of the methods above satisfied me: the first one didn't preserve the development settings even when flushing metadata to the `xmp` file; the second one required extra handling in Lightroom since I use a PC and a Mac and the last one worked fine when you want to dump a shooting session from the laptop onto the studio computer but was tricky to implement when two way synchronization was required.
 
 Lightroom Synchronization
-=========================
+-------------------------
 
 In order to synchronize Lightroom on two computers, you need to handle the photos (along with the optional `xmp` files) and the Lightroom catalog. Optionally, you may also want to synchronize the previews. Some like to synchronize the previews and some don't. Previews are huge compared to the catalogs but having up to date previews available make Lightroom more responsible and you can even make some work with the photos being unavailable.
 
@@ -34,7 +34,7 @@ The photos is the easy part and most synchronization tools will do the job. As L
 The catalog is an [SQLite][] database. Synchronization between my Mac and my PC requires to convert the catalog contents from the Mac structure to the PC structure and vice versa. Fortunately catalogs are compatible between Mac and PC and the conversion only requires to change the path to the _root folders_.
 
 My setup
-========
+--------
  
 My photos and the Lightroom catalogs are stored on a NAS. The PC is accessing the photos directly on the NAS while the catalog and the associated previews are replicated on a local drive using [Deltacopy](http://www.aboutmyip.com/AboutMyXApp/DeltaCopy.jsp) (a nice implementation of rsync for Windows). On the Mac side, I copy both photos, catalog and previews on the local drive using [rsync][].
 

@@ -88,7 +88,7 @@ pre {
     padding: 0.625em;
 }
 
-.title {
+h1 {
     background: none repeat scroll 0 0 darkSlateGray;
     border-radius: 5px 5px 5px 5px;
     color: #FFFFFF;
@@ -99,15 +99,15 @@ pre {
     font-family: sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h2, h3, h4, h5, h6 {
     font-family: sans-serif;
     text-align: left;
 }
 
-h1 {
+h2 {
   font-size: 150%;
 }
 
-h2 {
+h3 {
   font-size: 125%;
 }

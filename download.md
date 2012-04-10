@@ -5,17 +5,16 @@ pygments: true
 ---
 
 Downloads
-=========
+---------
 
 LRSync is released under the terms of [GNU General Public License v3](http://www.gnu.org/licenses/gpl-3.0.html). It is available in either [zip](https://github.com/ggtools/LRSync/zipball/master) or [tar.gz](https://github.com/ggtools/LRSync/tarball/master) formats.
 
-Third party downloads
----------------------
+### Third party downloads
 
 No special installation is required on MacOS X as `sqlite3` and `rsync` are installed by the system. However on Windows with Cygwin you'll need to install the `sqlite3` and `rsync` packages.
 
 Installation
-============
+------------
 
 As a bash script, LRSync will be a little be more tricky to use and install than the use Mac OS X applications. Some skills with the terminal is definitly a good thing.
 

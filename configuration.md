@@ -5,7 +5,7 @@ pygments: true
 ---
 
 Main configuration file
-=======================
+-----------------------
 
 LRSync main configuration file is the `lrsync.ini` file located in `$HOME/.lrsync`. This file and the `$HOME/.lrsync` are created the first time LRSync is run if they do not exist. The default contents are:
 
@@ -35,10 +35,9 @@ FOLDERCONFIG=folders.conf
 {% endhighlight %}
 
 Folders configuration
-=====================
+---------------------
 
-Displaying root folders
------------------------
+### Displaying root folders
 
 The root folders of a catalog can be displayed using LRSync using the following command:
 
@@ -48,8 +47,7 @@ $ ./lrsync.sh -q -c PhotosPerso-2-2 display
 /Users/Shared/Pictures/Lightroom/Photos/
 {% endhighlight %}
 
-Configuration file
-------------------
+### Configuration file
 
 A folder configuration file defines the relation between folders in the repo catalog and in the working catalogs. One or more folder configuration files may exist. The file consists in several lines with one folder definition per line. For instance:
 
