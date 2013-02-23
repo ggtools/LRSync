@@ -133,7 +133,7 @@ if [ ! -d "$LRS_CAT_DIR" ]; then
 fi
 
 LRS_CAT_FILE="$LRS_CAT_DIR/$LRS_CATALOG.lrcat"
-if [[ "$LRS_COMMAND" =~ to|display && ! -f "$LRS_CAT_FILE" ]]; then
+if [[ "$LRS_COMMAND" =~ ^to|display$ && ! -f "$LRS_CAT_FILE" ]]; then
 	echo "Catalog file '$LRS_CAT_FILE' not found" >&2
 	usage >&2
 	exit 3

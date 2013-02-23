@@ -69,7 +69,13 @@ fi
 
 # Find out the right direction to use.
 if [ "$LRS_COMMAND" = "auto" ]; then
-	if [ "$LRS_CAT_FILE" -ot "$LRS_REPO_FILE" ]; then
+	if [ ! -f "$LRS_CAT_FILE" ]; then
+		LRS_COMMAND="from"
+		LRS_FORCE=1
+	elif [ ! -f "$LRS_REPO_FILE" ]; then 
+		LRS_COMMAND="to"
+		LRS_FORCE=1
+	elif [ "$LRS_CAT_FILE" -ot "$LRS_REPO_FILE" ]; then
 		LRS_COMMAND="from"
 	else
 		LRS_COMMAND="to"
