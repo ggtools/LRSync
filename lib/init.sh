@@ -23,7 +23,7 @@ readIniSection() {
 	# Neat way to parse the ini section from LRS_INI
 	# shamelessly taken from http://www.tuxz.net/blog/
 	eval `sed -e 's/[[:space:]]*\=[[:space:]]*/=/g' \
-    -e 's/;.*$//' \
+    -e 's/[#;].*$//' \
     -e 's/[[:space:]]*$//' \
     -e 's/^[[:space:]]*//' \
     -e "s/^\(.*\)=\([^\"']*\)$/\1=\"\2\"/" \
